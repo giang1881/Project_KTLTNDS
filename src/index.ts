@@ -25,8 +25,6 @@ const keyDisplayQueue = new KeyDisplay();
 keyDisplayQueue.showStartScene()
 
 
-
-
 document.addEventListener('keydown', (event) => {
     keyDisplayQueue.down(event.key)
     keysPressed[event.key.toLowerCase()] = true
