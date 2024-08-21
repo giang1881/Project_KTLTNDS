@@ -11,9 +11,8 @@ import { audio } from './utils/audio';
 const scene = new scene_game()
 
 // AUDIO
-const listener = new audio();
+const listener = new audio('models/space.mp3');
 scene.camera.add(listener.listener);
-
 // MODEL WITH ANIMATIONS
 var characterControls: CharacterControls
 var threeFloor: THREE.Mesh
@@ -166,7 +165,7 @@ import('@dimforge/rapier3d').then(RAPIER => {
     }
 
     // Use the RAPIER module here.
-    let gravity = { x: 0.0, y: -9.81, z: 0.0 };
+    let gravity = { x: 0.0, y: -9.8, z: 0.0 };
     let world = new RAPIER.World(gravity);
 
     // Bodys
@@ -286,8 +285,9 @@ import('@dimforge/rapier3d').then(RAPIER => {
                 const ballColliderHandle = body.rigid.handle;
                 const intersection = world.intersectionPair(characterColliderHandle, ballColliderHandle);
                 if (intersection) {
-                    restartGame();
-                    return;
+                    // scene.camera.add(listener2.listener);
+                    const listener2 = new audio('models/end.mp3');
+                    setTimeout(restartGame,500);
                 }
             }
                 const cubeColliderHandle = cubeBody.rigid.handle;
